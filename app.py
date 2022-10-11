@@ -12,3 +12,9 @@ def index():
     html = render_template('index.html')
     response = make_response(html)
     return response
+
+@app.route('/keyboard', methods=['GET'])
+def keyboard():
+    html = render_template('keyboard.html')
+    response = make_response(html)
+    return response
