@@ -18,3 +18,9 @@ def keyboard():
     html = render_template('keyboard.html')
     response = make_response(html)
     return response
+
+@app.route('/practice', methods=['GET'])
+def practice():
+    html = render_template('practice.html')
+    response = make_response(html)
+    return response
