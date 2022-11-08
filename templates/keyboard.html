@@ -125,7 +125,6 @@
    let highlight = function (event) {
      console.log(event.code);
      if (!event.metaKey && !event.ctrlKey && keys.includes(event.code)) {
-       console.log("highlight");
        document.getElementById(event.code).className = "btn btn-secondary btn-lg";
     }
    }
@@ -133,7 +132,6 @@
    let unhighlight = function (event) {
      console.log(event.code);
      if (!event.metaKey && !event.ctrlKey && keys.includes(event.code)) {
-       console.log("unhighlight");
        document.getElementById(event.code).className = "btn btn-outline-secondary btn-lg";
      }
    }

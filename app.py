@@ -23,9 +23,7 @@ def keyboard():
 
 @app.route('/lessons', methods=['GET'])
 def lessons():
-    print("we are here")
     lessons = db.get_lessons()
-    print("success")
     html = render_template('lessons.html', lessons=lessons)
     response = make_response(html)
     return response
@@ -35,7 +33,6 @@ def practice(lesson_num):
     lesson = int(lesson_num.split(".")[0])
     sublesson = int(lesson_num.split(".")[1])
     text = db.get_text(lesson, sublesson)
-    print(text)
     html = render_template('practice.html', text=text)
     response = make_response(html)
     return response
