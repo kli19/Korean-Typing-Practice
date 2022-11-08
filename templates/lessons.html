@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Typing Practice
+{% endblock %}
+
+{% block nav %}
+<li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="/lessons">Lessons</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" aria-current="page" href="/keyboard">Keyboard</a>
+</li>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid p-1">
+  <div class="row p-1 mx"> 
+      <h3 class="text-center"> Lessons </h3>
+  </div>
+  
+  <div class="accordion" id="lessonsAccordion">
+    {% for lesson in lessons %}
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading{{loop.index}}">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{loop.index}}" aria-expanded="false" aria-controls="collapse{{loop.index}}">
+          Lesson {{lesson["lesson"]}}: {{lesson["title_kor"]}} [{{lesson["title_en"]}}]
+        </button>
+      </h2>
+      <div id="collapse{{loop.index}}" class="accordion-collapse collapse" aria-labelledby="heading{{loop.index}}">
+        <div class="accordion-body">
+          <strong> Sublessons </strong> <br>
+          {% for sublesson in lesson["sublessons"] %}
+          <a href="/practice/{{lesson['lesson']}}.{{loop.index}}">{{loop.index}}. {{sublesson["title_kor"]}} [{{sublesson["title_en"]}}] </a> <br>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
