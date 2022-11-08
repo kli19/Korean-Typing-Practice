@@ -1,0 +1,130 @@
+{
+  "conversations": [
+    {
+      "lesson": 1,
+      "title_kor": "인사",
+      "title_en": "Greetings",
+      "sublessons": [
+      {
+        "sublesson": 1,
+        "title_kor": "저는 스티브 윌슨이에요.",
+        "title_en": "I'm Steve Wilson.",
+        "text": "안녕하세요? 저는 스티브 윌슨 이에요. 3학년이에요.\n안녕하세요? 저는 김유미예요. 저는 1학년이에요.\n마이클 정이에요. 저도 1학년이에요."
+      },
+      {
+        "sublesson": 2,
+        "title_kor": "한국 사람이에요?",
+        "title_en": "Are you Korean?",
+        "text": "안녕하세요? 저는 마이클 정이에요. 이름이 뭐예요?\n소피아 왕이에요. 반갑습니다.\n소피아 씨는 한국 사람이에요?\n아니요, 한국 사람이 아니에요. 중국 사람이에요.\n아, 그래요? 저는 한국 사람이에요."
+      }]
+    },
+    {
+      "lesson": 2,
+      "title_kor": "한국어 수업",
+      "title_en": "Korean Language Class",
+      "sublessons": [
+      {
+        "sublesson": 1,
+        "title_kor": "한국어 수업이 재미있어요.",
+        "title_en": "The Korean language class is interesting.",
+        "text": "안녕하세요, 스티브 씨?\n어, 리사 씨. 안녕하세요?\n한국어 수업이 어때요?\n아주 재미있어요. 친구들도 좋아요.\n숙제가 많아요?\n네, 많아요."
+      },
+      {
+        "sublesson": 2,
+        "title_kor": "한국어를 공부해요.",
+        "title_en": "I'm studying Korean.",
+        "text": "리사 씨, 요즘 어떻게 지내요?\n잘 지내요. 소피아 씨는 어떻게 지내요?\n저도 잘 지내요.\n지금 뭐 해요?\n한국어를 공부해요. 오늘 한국어 시험을 봐요. 그리고 내일은 한국 역사 시험을 봐요.\n아, 그래요?\n네."
+      }]
+    },
+    {
+      "lesson": 3,
+      "title_kor": "대학 캠퍼스",
+      "title_en": "The University Campus",
+      "sublessons": [
+      {
+        "sublesson": 1,
+        "title_kor": "학교 식당이 어디 있어요?",
+        "title_en": "저... 학교 식당이 어디 있어요?\n유니온 빌딩 1층에 있어요. 그리고 도서관 뒤에도 있어요.\n유니온빌딩은 어디 있어요?\n우체국 앞에 있어요.",
+        "text": "TBA"
+      },
+      {
+        "sublesson": 2,
+        "title_kor": "오늘 수업 있으세요?",
+        "title_en": "Do you have class today?",
+        "text": "마이클 씨, 오늘 수업 있으세요?\n네, 한국어 수업이 있어요. 제니 씨는요?\n오늘은 수업이 없어요. 그런데, 내일은 경제학 수업이 있어요. 한국어 수업은 재미있어요?\n네, 아주 재미있어요. 그리고 선생님도 좋으세요. 그래서 매일 열심히 한국어를 공부해요.\n한국어 교실은 어디 있어요?\n로이스 홀 3층에 있어요."
+      }]
+    },
+    {
+      "lesson": 4,
+      "title_kor": "집",
+      "title_en": "At Home",
+      "sublessons": [
+      {
+        "sublesson": 1,
+        "title_kor": "동생이 두 명 있어요.",
+        "title_en": "I have two younger siblings.",
+        "text": "TBA"
+      },
+      {
+        "sublesson": 2,
+        "title_kor": "누구 방이에요?",
+        "title_en": "Whose room is it?",
+        "text": "TBA"
+      }]
+    },
+    {
+      "lesson": 5,
+      "title_kor": "서점에서",
+      "title_en": "At the Bookstore",
+      "sublessons": [
+      {
+        "sublesson": 1,
+        "title_kor": "서점에서 친구를 만나요.",
+        "title_en": "I'm meeting a friend at the bookstore.",
+        "text": "TBA"
+      },
+      {
+        "sublesson": 2,
+        "title_kor": "선물 사러 백화점에 가요.",
+        "title_en": "I'm going to the department store to buy a gift.",
+        "text": "TBA"
+      }]
+    },
+    {
+      "lesson": 6,
+      "title_kor": "나의 하루",
+      "title_en": "My Day",
+      "sublessons": [
+      {
+        "sublesson": 1,
+        "title_kor": "차로 1시간쯤 걸려요.",
+        "title_en": "It takes about an hour by car.",
+        "text": "TBA"
+      },
+      {
+        "sublesson": 2,
+        "title_kor": "어제 뭐 했어요",
+        "title_en": "What did you do yesterday?",
+        "text": "TBA"
+      }]
+    },
+    {
+      "lesson": 7,
+      "title_kor": "주말",
+      "title_en": "The Weekend",
+      "sublessons": [
+      {
+        "sublesson": 1,
+        "title_kor": "친구하고 영화 볼 거예요.",
+        "title_en": "I'm going to see a movie with my friend.",
+        "text": "TBA"
+      },
+      {
+        "sublesson": 2,
+        "title_kor": "파티에 안 갈 거예요?",
+        "title_en": "Aren't you going to the party?",
+        "text": "TBA"
+      }]
+    }
+  ]
+}
