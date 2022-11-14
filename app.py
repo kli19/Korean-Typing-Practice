@@ -11,9 +11,7 @@ app = Flask(__name__, template_folder='./templates')
 
 @app.route('/', methods=['GET'])
 def index():
-    html = render_template('index.html')
-    response = make_response(html)
-    return response
+    return redirect(url_for('keyboard'))
 
 @app.route('/keyboard', methods=['GET'])
 def keyboard():
