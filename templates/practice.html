@@ -9,24 +9,26 @@
   <a class="nav-link" aria-current="page" href="/keyboard">Keyboard</a>
 </li>
 <li class="nav-item">
-  <a class="nav-link active" aria-current="page" href="/lessons">Lessons</a>
+  <a class="nav-link" aria-current="page" href="/lessons">Lessons</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="/practice/1.1">Practice</a>
 </li>
 {% endblock %}
 
 {% block content %}
 <div class="container-fluid p-1">
   <div class="row p-1 mx"> 
+    <div class="col-7 mx-auto alert alert-secondary">
       <h3 class="text-center"> {{text["title_kor"]}} </h3>
-  </div>
-  <div class="row p-1 mx"> 
-    <div class="col-7 mx-auto">
+
         <!-- <span style="white-space: pre-line"> {{text["text"]}} </span> -->
         {% for line in text["text"] %}
         <p id="{{loop.index-1}}"> {{line}} </p>
         {% endfor %}
     </div>
   </div>
-  <div class="row p-1 mx"> 
+
     <form class="row g-3">
     <div class="col-7 mx-auto"> 
         <div class="form-group">
@@ -34,7 +36,7 @@
           </div>
     </div>
     </form>
-  </div>
+
   <br>
   <div id="keyboard">
     <div class="row p-1">

@@ -11,24 +11,30 @@
 <li class="nav-item">
   <a class="nav-link" aria-current="page" href="/lessons">Lessons</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" aria-current="page" href="/practice/1.1">Practice</a>
+</li>
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid">
-  <div class="row p-1 mx">
-    <div class="col-7 mx-auto">
-    <h3 class="text-center"> Type in Korean! </h3>
-    <div class="alert alert-secondary alert-dismissible fade show text-center" role="alert">
-      Make sure your input source is the 2-set Korean keyboard!
-      [<a href="https://support.apple.com/en-mn/guide/korean-input-method/welcome/mac" class="alert-link" target="_blank">macOS</a>
-      |<a href="https://www.koreanfluent.com/cross_cultural/korean_keyboard/korean_keyboard.htm" class="alert-link" target="_blank">Windows</a>]
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+<div class="row p-1 mx"> 
+  <div class="col-4 p-1 alert alert-secondary mx-auto text-center">
+      Make sure your input source is the 2-set Korean keyboard! <br> <br>
+      <a href="https://support.apple.com/en-mn/guide/korean-input-method/welcome/mac" class="alert-link" target="_blank">macOS</a>
+      <br>
+      <div class="col-8 mx-auto">
+      <img style='height: 100%; width: 100%; object-fit: contain' src="{{ url_for('static', filename='kor_keyboard_macOS.png') }}" alt="how to use korean keyboard">
+      </div>
+      <br>
+      <a href="https://www.koreanfluent.com/cross_cultural/korean_keyboard/korean_keyboard.htm" class="alert-link" target="_blank">Windows</a>
     </div>
+  <div class="col-8 mx-auto">
+  <div class="row p-1 mx">
+    <h3 class="text-center"> Type in Korean! </h3>
   </div>
   <div class="row p-1">
-    <div class="d-grid gap-2 col-8 mx-auto">
-    <div class="form-group">
+    <div class="d-grid gap-2 mx-auto">
+    <div class="col-10 mx-auto form-group">
       <textarea class="form-control" rows="4"></textarea>
     </div>
     </div>
@@ -107,6 +113,7 @@
       <div class="d-grid gap-2 col-5 mx-auto">
         <button class="btn btn-outline-secondary btn-lg" type="button" id="Space"> &nbsp </button>
     </div>
+  </div>
   </div>
   </div>
 </div>
