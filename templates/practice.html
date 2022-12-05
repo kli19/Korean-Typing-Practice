@@ -19,12 +19,20 @@
 {% block content %}
 <div class="container-fluid p-1">
   <div class="row p-1 mx"> 
+    <h3 class="text-center"> {{text["title_kor"]}} </h3>
     <div class="col-7 mx-auto alert alert-secondary">
-      <h3 class="text-center"> {{text["title_kor"]}} </h3>
-
-        <!-- <span style="white-space: pre-line"> {{text["text"]}} </span> -->
+        {% set count = namespace(value=0) %}
         {% for line in text["text"] %}
-        <p id="{{loop.index-1}}"> {{line}} </p>
+         <p> 
+          {% for phrase in line %}
+          {% if count.value == 0 %}
+          <span id="{{count.value}}" style="background-color:#FFFF00">{{phrase}}</span> 
+          {% else %}
+          <span id="{{count.value}}">{{phrase}}</span> 
+          {% endif %}
+          {% set count.value = count.value + 1 %}
+          {% endfor %}
+        </p>
         {% endfor %}
     </div>
   </div>
@@ -33,7 +41,7 @@
     <div class="col-7 mx-auto"> 
         <div class="form-group">
           <input id="user_input" type="text" class="form-control">
-          </div>
+        </div>
     </div>
     </form>
 
@@ -126,22 +134,25 @@
   var text = {{text["text"] | safe}};
   var curr = 0;
   let check_line = function (event) {
-    if (event.key == "Enter"){
+    if (event.key == "Enter" || event.key == " "){
       event.preventDefault();
-      console.log(text.length)
-      if (curr < text.length) {
+      let curr_line = document.getElementById(curr.toString());
+      if (curr_line) {
         let user_input = document.getElementById("user_input").value.trim();
-        let curr_line = document.getElementById(curr.toString());
-        // console.log(user_input);
-        // console.log(curr_line.textContent.trim());
+        console.log(user_input);
+        console.log(curr_line.textContent.trim());
         if (user_input == curr_line.textContent.trim()) {
-          curr_line.style.backgroundColor = "#00FF00";
+          curr_line.style.color = "#339900";
         } else{
-          curr_line.style.backgroundColor = "#AA4A44";
+          curr_line.style.color = "#CC3300";
         }
         curr += 1;
+        curr_line.style.backgroundColor = "transparent";
+        let next_line = document.getElementById(curr.toString());
+        next_line.style.backgroundColor ="#FFFF00";
+        document.getElementById("user_input").value = "";
       }
-    }
+    } 
   }
 
 
