@@ -30,7 +30,19 @@ def lessons():
 def practice(lesson_num):
     lesson = int(lesson_num.split(".")[0])
     sublesson = int(lesson_num.split(".")[1])
+    prev, next = None, None
+    if lesson_num == "1.1":
+        next = "/practice/1.2" 
+    elif lesson_num == "7.2":
+        prev = "/practice/7.1"
+    else:
+        if sublesson == 2:
+            prev = "/practice/" + str(lesson) + "." + "1"
+            next = "/practice/" + str(lesson+1) + "." + "1"
+        else:
+            prev = "/practice/" + str(lesson-1) + "." + "2"
+            next = "/practice/" + str(lesson) + "." + "2"
     text = db.get_text(lesson, sublesson)
-    html = render_template('practice.html', text=text)
+    html = render_template('practice.html', text=text, prev=prev, next=next)
     response = make_response(html)
     return response
