@@ -20,7 +20,7 @@
 <div class="container-fluid p-1">
   <div class="row p-1 mx"> 
     <div class="row mx-auto"> 
-      <div class="col-8 mx-auto"> <h3 class="text-center"> {{text["title_kor"]}} </h3> </div>
+      <div class="col-8 mx-auto"> <h3 class="text-center"> L{{lesson_num}}: {{text["title_kor"]}} </h3> </div>
     </div>
     <div class="row">
     <div class="col-3">
@@ -33,7 +33,7 @@
     <div class="col-6 mx-auto alert alert-secondary">
         {% set count = namespace(value=0) %}
         {% for line in text["text"] %}
-         <p class="h5"> 
+         <p class="h6"> 
           {% for phrase in line %}
           {% if count.value == 0 %}
           <span id="{{count.value}}" style="background-color:#FFFF00">{{phrase}}</span> 
@@ -67,76 +67,76 @@
   <div id="keyboard">
     <div class="row p-1">
       <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Backquote"> ~ <br> ` </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Digit1"> ! <br> 1 </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Digit2"> @ <br> 2 </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Digit3"> # <br> 3 </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Digit4"> $ <br> 4 </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Digit5"> % <br> 5 </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Digit6"> ^ <br> 6 </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Digit7"> & <br> 7 </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Digit8"> * <br> 8 </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Digit9"> ( <br> 9 </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Digit0"> ) <br> 0 </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Minus"> _ <br> - </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Equal"> + <br> = </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Backspace"> backspace </button>
+        <button type="button" class="btn btn-outline-secondary" id="Backquote"> ~ <br> ` </button>
+        <button type="button" class="btn btn-outline-secondary" id="Digit1"> ! <br> 1 </button>
+        <button type="button" class="btn btn-outline-secondary" id="Digit2"> @ <br> 2 </button>
+        <button type="button" class="btn btn-outline-secondary" id="Digit3"> # <br> 3 </button>
+        <button type="button" class="btn btn-outline-secondary" id="Digit4"> $ <br> 4 </button>
+        <button type="button" class="btn btn-outline-secondary" id="Digit5"> % <br> 5 </button>
+        <button type="button" class="btn btn-outline-secondary" id="Digit6"> ^ <br> 6 </button>
+        <button type="button" class="btn btn-outline-secondary" id="Digit7"> & <br> 7 </button>
+        <button type="button" class="btn btn-outline-secondary" id="Digit8"> * <br> 8 </button>
+        <button type="button" class="btn btn-outline-secondary" id="Digit9"> ( <br> 9 </button>
+        <button type="button" class="btn btn-outline-secondary" id="Digit0"> ) <br> 0 </button>
+        <button type="button" class="btn btn-outline-secondary" id="Minus"> _ <br> - </button>
+        <button type="button" class="btn btn-outline-secondary" id="Equal"> + <br> = </button>
+        <button type="button" class="btn btn-outline-secondary" id="Backspace"> backspace </button>
       </div>
     </div>
     <div class="row p-1">
       <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-        <!-- <button type="button" class="btn btn-outline-secondary btn-lg" id="Tab"> tab </button> -->
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyQ"> q ㅃ <br> ㅂ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyW"> w ㅉ <br> ㅈ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyE"> e ㄸ <br> ㄷ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyR"> r ㄲ <br> ㄱ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyT"> t ㅆ <br> ㅅ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyY"> y <br> ㅛ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyU"> u <br> ㅕ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyI"> i <br> ㅑ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyO"> o ㅒ <br> ㅐ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyP"> p ㅖ <br> ㅔ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="BracketLeft"> { <br> [ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="BracketRight"> } <br> ] </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Backslash"> | <br> \ </button>
+        <!-- <button type="button" class="btn btn-outline-secondary" id="Tab"> tab </button> -->
+        <button type="button" class="btn btn-outline-secondary" id="KeyQ"> q ㅃ <br> ㅂ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyW"> w ㅉ <br> ㅈ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyE"> e ㄸ <br> ㄷ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyR"> r ㄲ <br> ㄱ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyT"> t ㅆ <br> ㅅ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyY"> y <br> ㅛ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyU"> u <br> ㅕ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyI"> i <br> ㅑ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyO"> o ㅒ <br> ㅐ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyP"> p ㅖ <br> ㅔ </button>
+        <button type="button" class="btn btn-outline-secondary" id="BracketLeft"> { <br> [ </button>
+        <button type="button" class="btn btn-outline-secondary" id="BracketRight"> } <br> ] </button>
+        <button type="button" class="btn btn-outline-secondary" id="Backslash"> | <br> \ </button>
       </div>
     </div>
     <div class="row p-1">
       <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="CapsLock"> caps lock </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyA"> a <br> ㅁ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyS"> s <br> ㄴ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyD"> d <br> ㅇ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyF"> f <br> ㄹ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyG"> g <br> ㅎ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyH"> h <br> ㅗ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyJ"> j <br> ㅓ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyK"> k <br> ㅏ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyL"> l <br> ㅣ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Semicolon"> : <br> ; </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Quote"> " <br> ' </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Enter"> enter </button>
+        <button type="button" class="btn btn-outline-secondary" id="CapsLock"> caps lock </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyA"> a <br> ㅁ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyS"> s <br> ㄴ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyD"> d <br> ㅇ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyF"> f <br> ㄹ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyG"> g <br> ㅎ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyH"> h <br> ㅗ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyJ"> j <br> ㅓ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyK"> k <br> ㅏ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyL"> l <br> ㅣ </button>
+        <button type="button" class="btn btn-outline-secondary" id="Semicolon"> : <br> ; </button>
+        <button type="button" class="btn btn-outline-secondary" id="Quote"> " <br> ' </button>
+        <button type="button" class="btn btn-outline-secondary" id="Enter"> enter </button>
       </div>
     </div>
     <div class="row p-1">
       <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="ShiftLeft"> shift </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyZ"> z <br> ㅋ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyX"> x <br> ㅌ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyC"> c <br> ㅊ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyV"> v <br> ㅍ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyB"> b <br> ㅠ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyN"> n <br> ㅜ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="KeyM"> m <br> ㅡ </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Comma"> < <br> , </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Period"> > <br> . </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="Slash"> ? <br> / </button>
-        <button type="button" class="btn btn-outline-secondary btn-lg" id="ShiftRight"> shift </button>
+        <button type="button" class="btn btn-outline-secondary" id="ShiftLeft"> shift </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyZ"> z <br> ㅋ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyX"> x <br> ㅌ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyC"> c <br> ㅊ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyV"> v <br> ㅍ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyB"> b <br> ㅠ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyN"> n <br> ㅜ </button>
+        <button type="button" class="btn btn-outline-secondary" id="KeyM"> m <br> ㅡ </button>
+        <button type="button" class="btn btn-outline-secondary" id="Comma"> < <br> , </button>
+        <button type="button" class="btn btn-outline-secondary" id="Period"> > <br> . </button>
+        <button type="button" class="btn btn-outline-secondary" id="Slash"> ? <br> / </button>
+        <button type="button" class="btn btn-outline-secondary" id="ShiftRight"> shift </button>
       </div>
     </div>
     <div class="row p-1">
         <div class="d-grid gap-2 col-5 mx-auto">
-          <button class="btn btn-outline-secondary btn-lg" type="button" id="Space"> &nbsp </button>
+          <button class="btn btn-outline-secondary" type="button" id="Space"> &nbsp </button>
       </div>
     </div>
     </div>
@@ -180,13 +180,13 @@
    "Backquote", "Minus", "Equal", "Backspace", "BracketLeft", "BracketRight", "Backslash", "CapsLock", "Semicolon", "Quote", "Enter", "ShiftLeft", "Comma", "Period", "Slash", "ShiftRight", "Space"];
    let highlight = function (event) {
      if (!event.metaKey && !event.ctrlKey && keys.includes(event.code)) {
-       document.getElementById(event.code).className = "btn btn-secondary btn-lg";
+       document.getElementById(event.code).className = "btn btn-secondary";
     }
    }
 
    let unhighlight = function (event) {
      if (!event.metaKey && !event.ctrlKey && keys.includes(event.code)) {
-       document.getElementById(event.code).className = "btn btn-outline-secondary btn-lg";
+       document.getElementById(event.code).className = "btn btn-outline-secondary";
      }
    }
 

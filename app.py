@@ -43,6 +43,6 @@ def practice(lesson_num):
             prev = "/practice/" + str(lesson-1) + "." + "2"
             next = "/practice/" + str(lesson) + "." + "2"
     text = db.get_text(lesson, sublesson)
-    html = render_template('practice.html', text=text, prev=prev, next=next)
+    html = render_template('practice.html', lesson_num=lesson_num, text=text, prev=prev, next=next)
     response = make_response(html)
     return response
