@@ -19,20 +19,18 @@
 {% block content %}
 <div class="container-fluid p-1">
   <div class="row p-1 mx"> 
-    <div class="row"> 
+    <div class="row mx-auto"> 
+      <div class="col-8 mx-auto"> <h3 class="text-center"> {{text["title_kor"]}} </h3> </div>
+    </div>
+    <div class="row">
+    <div class="col-3">
       {% if prev %} 
-      <div class="col-2"> <a class="btn btn-outline-dark" href={{prev}}> ❮ Previous </a> </div>
+      <a class="float-end btn btn-outline-dark" href={{prev}}> ❮ Prev </a> 
       {% else %} 
-      <div class="col-2"> <a class="btn btn-outline-dark" href="/"> ❮ Home </a> </div>
-      {% endif %}
-      <div class="col-8"> <h3 class="text-center"> {{text["title_kor"]}} </h3> </div>
-      {% if next %}
-      <div class="col-2"> <a class="float-end btn btn-outline-dark" href={{next}}> Next ❯ </a> </div>
-      {% else %} 
-      <div class="col-2"> <a class="float-end btn btn-outline-dark" href="/"> Home ❯ </a> </div>
+      <a class="float-end btn btn-outline-dark" href="/"> ❮ Home </a>   
       {% endif %}
     </div>
-    <div class="col-7 mx-auto alert alert-secondary">
+    <div class="col-6 mx-auto alert alert-secondary">
         {% set count = namespace(value=0) %}
         {% for line in text["text"] %}
          <p class="h5"> 
@@ -47,6 +45,14 @@
         </p>
         {% endfor %}
     </div>
+    <div class="col-3">
+      {% if next %}
+      <a class="btn btn-outline-dark" href={{next}}> Next ❯ </a>
+      {% else %} 
+      <a class="btn btn-outline-dark" href="/"> Home ❯ </a>
+      {% endif %}
+    </div>
+  </div>
   </div>
 
     <form class="row g-3">
