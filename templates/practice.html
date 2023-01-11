@@ -21,15 +21,15 @@
   <div class="row p-1 mx"> 
     <div class="row"> 
       {% if prev %} 
-      <div class="col-2"> <a class="btn btn-outline-dark btn-lg " href={{prev}}> ❮ Previous </a> </div>
+      <div class="col-2"> <a class="btn btn-outline-dark" href={{prev}}> ❮ Previous </a> </div>
       {% else %} 
-      <div class="col-2"> <a class="btn btn-outline-dark btn-lg " href="/"> ❮ Home </a> </div>
+      <div class="col-2"> <a class="btn btn-outline-dark" href="/"> ❮ Home </a> </div>
       {% endif %}
       <div class="col-8"> <h3 class="text-center"> {{text["title_kor"]}} </h3> </div>
       {% if next %}
-      <div class="col-2"> <a class="float-end btn btn-outline-dark btn-lg " href={{next}}> Next ❯ </a> </div>
+      <div class="col-2"> <a class="float-end btn btn-outline-dark" href={{next}}> Next ❯ </a> </div>
       {% else %} 
-      <div class="col-2"> <a class="float-end btn btn-outline-dark btn-lg " href="/"> Home ❯ </a> </div>
+      <div class="col-2"> <a class="float-end btn btn-outline-dark" href="/"> Home ❯ </a> </div>
       {% endif %}
     </div>
     <div class="col-7 mx-auto alert alert-secondary">
