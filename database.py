@@ -1,8 +1,9 @@
 import json
 from pymongo import MongoClient
+from os import environ
 
-
-client = MongoClient("mongodb+srv://karenli:VLVvTdRnx4BBxHb0@cluster0.8thfppb.mongodb.net/?retryWrites=true&w=majority")
+DB_CONNECTION_STR = environ["DB_CONNECTION_STR"]
+client = MongoClient(DB_CONNECTION_STR)
 db = client.typing_practice
 
 def get_lessons():
