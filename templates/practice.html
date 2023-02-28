@@ -19,6 +19,11 @@
 {% block content %}
 <div class="container-fluid p-1">
   <div class="row p-1 mx"> 
+    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+      This website intended to help students of Elementary Korean practice touch-typing in Korean (with or without a physical Korean keyboard). <br>
+      <strong>Before you begin typing make sure your input source is the 2-set Korean keyboard. For more information, click the [?] on the top right. </strong> 
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     <div class="row mx-auto"> 
       <div class="col-8 mx-auto"> <h3 class="text-center"> L{{lesson_num}}: {{text["title_kor"]}} </h3> </div>
     </div>
