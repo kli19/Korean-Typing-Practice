@@ -57,10 +57,26 @@
 
     <form class="row mx-auto">
     <div class="col-6 mx-auto"> 
-        <div class="form-group">
-          <input id="user_input" type="text" class="form-control">
+      <div class="row">
+        <div class="col-9">
+          <div class="form-group">
+            <input id="user_input" type="text" class="form-control">
+          </div>
         </div>
-    </div>
+        <div class="col-2">
+          <div class="d-grid gap-2">
+          <button id="wpm" type="button" class="btn btn-secondary px-1">
+            WPM: ---
+          </button>
+          </div>
+        </div>
+        <div class="col-1">
+          <button id="restart" type="button" class="btn btn-outline-dark px-2">
+            <img src="{{ url_for('static', filename='refresh.png') }}" height="25px">
+          </button>
+        </div>
+      </div>
+      </div>
     </form>
 
   <br>
@@ -80,6 +96,7 @@
  <script>
   'use strict';
 
+  // keyboard layout
   const row0 = ["Backquote", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Digit0", "Minus", "Equal", "Backspace"];
   const row1 = ["Tab", "KeyQ", "KeyW", "KeyE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "BracketLeft", "BracketRight", "Backslash"];
   const row2 = ["CapsLock", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "Semicolon", "Quote", "Enter"];
@@ -87,6 +104,7 @@
   const row4 = ["Space"];
   var rows = [row0, row1, row2, row3, row4]
 
+  // create keyboard
   for (let i = 0; i < rows.length; i++) {
     var parent = document.getElementById("row" + String(i))
     var row = rows[i]
@@ -99,33 +117,74 @@
     }
   }
 
-  var text = {{text["text"] | safe}};
-  var curr = 0;
-  let check_line = function (event) {
+  const total_characters = {{num_characters|safe}};
+  var incorrect_characters = 0;
+  var text = {{text["text"] | safe}}; // phrases in the conversation
+  var curr = 0; // counter of current phrase
+  var start_timer = false;
+  var begin = null;
+  var end = null;
+
+  // check if user input matches current phrase
+  let check_phrase = function (event) {
+    if (!start_timer) {
+      start_timer = true;
+      begin = Date.now();
+    }
     if (event.key == "Enter" || event.key == " "){
       event.preventDefault();
-      let curr_line = document.getElementById(curr.toString());
-      if (curr_line) {
-        let user_input = document.getElementById("user_input").value.trim();
-        console.log(user_input);
-        console.log(curr_line.textContent.trim());
-        if (user_input == curr_line.textContent.trim()) {
-          curr_line.style.color = "#339900";
-        } else{
-          curr_line.style.color = "#CC3300";
+      let curr_phrase = document.getElementById(curr.toString());
+
+      // if we have not reached the end of the text
+      if (curr_phrase) {
+        let user_input = document.getElementById("user_input").value.trim().replace('?', '').replace('.', '').replace(',', '');
+        let phrase = curr_phrase.textContent.trim().replace('?', '').replace('.', '').replace(',', '');
+        if (user_input == phrase) {
+          curr_phrase.style.color = "#339900";
+        } 
+        else{
+          curr_phrase.style.color = "#CC3300";
+          incorrect_characters += phrase.length;
         }
         curr += 1;
-        curr_line.style.backgroundColor = "transparent";
-        let next_line = document.getElementById(curr.toString());
-        next_line.style.backgroundColor ="#FFFF00";
+        curr_phrase.style.backgroundColor = "transparent";
+        let next_phrase = document.getElementById(curr.toString());
+        if (next_phrase){
+          next_phrase.style.backgroundColor ="#FFFF00";
+        }
+        // if we have finished typing all of the phrases
+        else {
+          end = Date.now();
+          let minutes_elapsed = (end - begin) / 60000;
+          let correct_characters = total_characters - incorrect_characters;
+          let wpm = Math.floor(correct_characters/minutes_elapsed)
+          let wpm_button = document.getElementById("wpm").textContent = "WPM: " + wpm;
+        }
         document.getElementById("user_input").value = "";
-      }
+      } 
     } 
   }
 
+  let restart = function() {
+    let phrases = text.flat();
+    for (let i=0; i < phrases.length; i++) {
+      let curr_phrase = document.getElementById(i.toString());
+      curr_phrase.style.color = "#000000";
+      curr_phrase.style.backgroundColor = "transparent";
+      if (i==0){
+        curr_phrase.style.backgroundColor = "#FFFF00";
+      }
+    }
+    incorrect_characters = 0;
+    curr = 0;
+    start_timer = false; 
+    begin = null;
+    end = null;
+    document.getElementById("user_input").value = "";
+  }
 
-  
   const keys = rows.flat();
+  // highlight key (make brown) associated with event listener
   let highlight = function (event) {
   if (!event.metaKey && !event.ctrlKey && keys.includes(event.code)) {
     if (event.code == "Tab") {
@@ -136,6 +195,7 @@
   }
   }
 
+  // unhighlight key (make white) associated with event listener
   let unhighlight = function (event) {
   if (!event.metaKey && !event.ctrlKey && keys.includes(event.code)) {
     document.getElementById(event.code).setAttribute("src", "{{ url_for('static', filename='KeysWhite/_.png') }}".replace("_", event.code));
@@ -144,9 +204,12 @@
 
    // set up event listeners to highlight corresponding button on keypress
    const input = document.querySelector('input');
-   input.addEventListener("keydown", highlight);
-   input.addEventListener("keyup", unhighlight);
-   input.addEventListener("keypress", check_line)
+   input.addEventListener("keydown", highlight); // highlight key being pressed
+   input.addEventListener("keyup", unhighlight); // unlight key a user unpressed
+   input.addEventListener("keypress", check_phrase) // check each phrase after a user finishes typing it
+   
+   const restart_button = document.getElementById("restart");
+   restart_button.addEventListener("click", restart)
    </script>
 
 {% endblock %}
