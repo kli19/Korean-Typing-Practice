@@ -11,7 +11,7 @@ app = Flask(__name__, template_folder='./templates')
 
 @app.route('/', methods=['GET'])
 def index():
-    return redirect(url_for('keyboard'))
+    return redirect(url_for('practice', lesson_num=1.1))
 
 @app.route('/keyboard', methods=['GET'])
 def keyboard():
