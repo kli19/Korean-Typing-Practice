@@ -142,6 +142,7 @@
 
   // check if user input matches current phrase
   let check_phrase = function (event) {
+    console.log("typing", event.code);
     if (!start_timer) {
       start_timer = true;
       begin = Date.now();
@@ -221,7 +222,7 @@
    const input = document.querySelector('input');
    input.addEventListener("keydown", highlight); // highlight key being pressed
    input.addEventListener("keyup", unhighlight); // unlight key a user unpressed
-   input.addEventListener("keypress", check_phrase) // check each phrase after a user finishes typing it
+   input.addEventListener("keyup", check_phrase) // check each phrase after a user finishes typing it
    
    const restart_button = document.getElementById("restart");
    restart_button.addEventListener("click", restart);
