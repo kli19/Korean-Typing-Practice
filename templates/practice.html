@@ -140,6 +140,13 @@
   var begin = null;
   var end = null;
 
+  // ignore enter key
+  let ignoreEnter = function(event) {
+    if (event.key == "Enter") {
+      event.preventDefault();
+    }
+  }
+
   // check if user input matches current phrase
   let check_phrase = function (event) {
     console.log("typing", event.code);
@@ -223,6 +230,7 @@
    input.addEventListener("keydown", highlight); // highlight key being pressed
    input.addEventListener("keyup", unhighlight); // unlight key a user unpressed
    input.addEventListener("keyup", check_phrase) // check each phrase after a user finishes typing it
+   input.addEventListener("keypress", ignoreEnter); // don't refresh page when enter key is pressed
    
    const restart_button = document.getElementById("restart");
    restart_button.addEventListener("click", restart);
