@@ -28,6 +28,10 @@ def get_student_customs(student):
 
 def get_admins():
     collection = db.admins
+    res = collection.find_one({"type": "admins_list"})["admins_list"]
+    return res
 
 def get_admins_customs():
     collection = db.admins
+
+print(get_admins())
