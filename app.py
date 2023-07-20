@@ -77,7 +77,7 @@ def practice(lesson_num):
         else:
             prev = "/lessons/" + str(lesson-1) + "." + "2"
             next = "/lessons/" + str(lesson) + "." + "2"
-    text = db.get_text(lesson, sublesson)
+    text = db.get_lesson_text(lesson, sublesson)
     convo = db.get_conversation(lesson, sublesson)
     num_characters = len(''.join(convo.replace('?', '').replace('.', '').replace(',', '').split()))
     html = render_template('practice.html', lesson_num=lesson_num, text=text, prev=prev, next=next, num_characters=num_characters, netid=netid)
