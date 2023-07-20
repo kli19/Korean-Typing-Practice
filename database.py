@@ -22,3 +22,12 @@ def get_conversation(lesson, sublesson):
     collection = db.conversations
     res = collection.find_one({"lesson": lesson})["sublessons"][sublesson-1]
     return res["text"]
+
+def get_student_customs(student):
+    collection = db.students
+
+def get_admins():
+    collection = db.admins
+
+def get_admins_customs():
+    collection = db.admins

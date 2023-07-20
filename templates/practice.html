@@ -19,31 +19,26 @@
 {% block content %}
 <div class="container-fluid p-1">
   <div class="row p-1 mx"> 
-    <div id="info_alert" class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-      This website intended to help students of Elementary Korean practice touch-typing in Korean (with or without a physical Korean keyboard). <br>
-      <strong>Before you begin typing make sure your input source is the 2-set Korean keyboard. For more information, click the [?] on the top right. </strong> 
-      <button id="dismiss_info_alert" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    <div class="row mx-auto"> 
+    <div class="row mx-auto">
       <div class="col-8 mx-auto"> <h3 class="text-center"> L{{lesson_num}}: {{text["title_kor"]}} </h3> </div>
     </div>
     <div class="row mx-auto">
     <div class="col-3">
-      {% if prev %} 
-      <a class="float-end btn btn-outline-dark" href={{prev}}> ❮ Prev </a> 
-      {% else %} 
-      <a class="float-end btn btn-outline-dark" href="/"> ❮ Home </a>   
+      {% if prev %}
+      <a class="float-end btn btn-outline-dark" href={{prev}}> ❮ Prev </a>
+      {% else %}
+      <a class="float-end btn btn-outline-dark" href="/"> ❮ Home </a>
       {% endif %}
     </div>
     <div class="col-6 mx-auto alert alert-secondary">
         {% set count = namespace(value=0) %}
         {% for line in text["text"] %}
-         <p class="h6"> 
+         <p class="h6">
           {% for phrase in line %}
           {% if count.value == 0 %}
-          <span id="{{count.value}}" style="background-color:#FFFF00">{{phrase}}</span> 
+          <span id="{{count.value}}" style="background-color:#FFFF00">{{phrase}}</span>
           {% else %}
-          <span id="{{count.value}}">{{phrase}}</span> 
+          <span id="{{count.value}}">{{phrase}}</span>
           {% endif %}
           {% set count.value = count.value + 1 %}
           {% endfor %}
@@ -53,7 +48,7 @@
     <div class="col-3">
       {% if next %}
       <a class="btn btn-outline-dark" href={{next}}> Next ❯ </a>
-      {% else %} 
+      {% else %}
       <a class="btn btn-outline-dark" href="/"> Home ❯ </a>
       {% endif %}
     </div>
@@ -61,7 +56,7 @@
   </div>
 
     <form class="row mx-auto">
-    <div class="col-6 mx-auto"> 
+    <div class="col-6 mx-auto">
       <div class="row">
         <div class="col-9">
           <div class="form-group">
@@ -100,16 +95,6 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
  <script>
   'use strict';
-
-  // only display the info alert if it is the user's first time visiting the site
-  let set_visited = function() {
-    localStorage.setItem('visited', true);
-  }
-
-  var visited = localStorage.getItem('visited');
-  if (visited) {
-    document.getElementById("info_alert").remove();
-  }
 
   // keyboard layout
   const row0 = ["Backquote", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Digit0", "Minus", "Equal", "Backspace"];
@@ -164,7 +149,7 @@
         let phrase = curr_phrase.textContent.trim().replace('?', '').replace('.', '').replace(',', '');
         if (user_input == phrase) {
           curr_phrase.style.color = "#339900";
-        } 
+        }
         else{
           curr_phrase.style.color = "#CC3300";
           incorrect_characters += phrase.length;
@@ -184,8 +169,8 @@
           let wpm_button = document.getElementById("wpm").textContent = "WPM: " + wpm;
         }
         document.getElementById("user_input").value = "";
-      } 
-    } 
+      }
+    }
   }
 
   let restart = function() {
@@ -200,7 +185,7 @@
     }
     incorrect_characters = 0;
     curr = 0;
-    start_timer = false; 
+    start_timer = false;
     begin = null;
     end = null;
     document.getElementById("user_input").value = "";
@@ -231,7 +216,7 @@
    input.addEventListener("keyup", unhighlight); // unlight key a user unpressed
    input.addEventListener("keyup", check_phrase) // check each phrase after a user finishes typing it
    input.addEventListener("keypress", ignoreEnter); // don't refresh page when enter key is pressed
-   
+
    const restart_button = document.getElementById("restart");
    restart_button.addEventListener("click", restart);
 

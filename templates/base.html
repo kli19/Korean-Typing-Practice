@@ -12,25 +12,45 @@
       {% block title %}{% endblock %}| Korean Typing Practice
     </title>
   </head>
-  <body>
+  <body style="background-color:#ACCBBA ;">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">
-          Home
+        <a class="navbar-brand" href="/lessons/1.1">
+          HolangiType
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             {% block nav %}
             {% endblock %}
           </ul>
-          <ul class="navbar-nav ms-auto">
+          <!-- <ul class="navbar-nav ms-auto">
             <li> <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
               ?
-            </button> 
-          </ul>
+            </button>
+          </ul> -->
+        </div>
+        <div class="navbar-nav navbar-right" id="navRight">
+          <div class="navbar-nav">
+            {% if netid %}
+              <a class="nav-link"> {{netid}}</a>
+              <form class="nav-button" action="/logout" method="get">
+                  <button class="btn btn-primary nav-button" type="submit">
+                    Log out
+                    <i class="fas fa-sign-in-alt"></i>
+                  </button>
+              </form>
+            {% else %}
+              <form class="nav-button" action="/login" method="get">
+                  <button class="btn btn-primary nav-button" type="submit">
+                    Log in
+                  </button>
+                </form>
+            {% endif %}
+          </div>
         </div>
       </div>
     </nav>
@@ -44,10 +64,10 @@
           </div>
           <div class="modal-body">
             <div class=" mx-auto text-center">
-              <div class="row"> 
+              <div class="row">
                 <h5 class="text-center"> Depending on your operating system, do the following: </h1>
-              </div> 
-              <div class="row"> 
+              </div>
+              <div class="row">
                 <div class="col">
                   <a href="https://support.apple.com/en-mn/guide/korean-input-method/welcome/mac" class="alert-link" target="_blank">macOS</a>
                   <div class="mx-auto">
@@ -56,7 +76,7 @@
                 </div>
                 <div class="col">
                   <a href="https://www.koreanfluent.com/cross_cultural/korean_keyboard/korean_keyboard.htm" class="alert-link" target="_blank">Windows</a>
-                  <br> 
+                  <br>
                   <div class="mx-auto">
                   <img style='height: 60%; width: 60%; object-fit: contain' src="{{ url_for('static', filename='kor_keyboard_windows.png') }}" alt="how to use korean keyboard">
                   </div>

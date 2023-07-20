@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-  Typing Practice
+  Lessons
 {% endblock %}
 
 {% block nav %}
@@ -18,10 +18,10 @@
 
 {% block content %}
 <div class="container-fluid p-1">
-  <div class="row p-1 mx"> 
+  <div class="row p-1 mx">
       <h3 class="text-center"> Lessons </h3>
   </div>
-  
+
   <div class="accordion" id="lessonsAccordion">
     {% for lesson in lessons %}
     <div class="accordion-item">
@@ -34,7 +34,7 @@
         <div class="accordion-body">
           <strong> Sublessons </strong> <br>
           {% for sublesson in lesson["sublessons"] %}
-          <a href="/practice/{{lesson['lesson']}}.{{loop.index}}">{{loop.index}}. {{sublesson["title_kor"]}} [{{sublesson["title_en"]}}] </a> <br>
+          <a href="/lessons/{{lesson['lesson']}}.{{loop.index}}">{{loop.index}}. {{sublesson["title_kor"]}} [{{sublesson["title_en"]}}] </a> <br>
           {% endfor %}
         </div>
       </div>
