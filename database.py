@@ -8,9 +8,9 @@ db = client.typing_practice
 
 def get_lessons():
     collection = db.conversations
-    return collection.find()
+    return collection.find().sort("lesson")
 
-def get_text(lesson, sublesson):
+def get_lesson_text(lesson, sublesson):
     collection = db.conversations
     res = collection.find_one({"lesson": lesson})["sublessons"][sublesson-1]
     text = res["text"]
@@ -23,15 +23,22 @@ def get_conversation(lesson, sublesson):
     res = collection.find_one({"lesson": lesson})["sublessons"][sublesson-1]
     return res["text"]
 
-def get_student_customs(student):
-    collection = db.students
+def insert_lesson(dic):
+    collection = db.conversations
+    collection.insert_one(dic)
+
+def delete_lesson(lesson_num):
+    collection = db.conversations
+    collection.delete_one({"lesson": lesson_num})
 
 def get_admins():
     collection = db.admins
     res = collection.find_one({"type": "admins_list"})["admins_list"]
     return res
 
-def get_admins_customs():
-    collection = db.admins
+def get_existing_lesson_nums():
+    collection = db.conversations
+    res = collection.distinct("lesson")
+    return res
 
-print(get_admins())
+print(get_existing_lesson_nums())
