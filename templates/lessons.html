@@ -42,4 +42,13 @@
     {% endfor %}
   </div>
 </div>
+{% if isadmin %}
+<form class="button" action="/editlessons" method="get">
+<div class="row m-1 justify-content-md-center">
+    <button class="btn btn-warning btn-lg btn-block">
+      Edit
+    </button>
+</div>
+</form>
+{% endif %}
 {% endblock %}

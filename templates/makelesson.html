@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Create Lesson
+{% endblock %}
+
+{% block nav %}
+<li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="/keyboard">Keyboard</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" aria-current="page" href="/lessons">Lessons</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" aria-current="page" href="/lessons/1.1">Practice</a>
+</li>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center m-2"> Create a new lesson: </h1>
+<div id="lessonExistsAlert" class="alert alert-danger collapse" role="alert">
+  <strong> An entry with this lesson number already exists. </strong>
+  Please change the lesson number or remove the existing entry with this lesson number to submit this entry.
+</div>
+<form method="POST" action="/addlesson" onsubmit="return validateLesson()">
+  <div class="row">
+  <div class="col-2 pb-4 px-4">
+    <div class="row p-2">
+      <label for="lessonNum" class="form-label">Lesson #</label>
+      <input id="lessonNum" name="lesson" type="number" class="form-control" placeholder="Ex: 1" required>
+    </div>
+    <div class="row p-2">
+      <label for="lessonTitleKorean" class="form-label">Lesson title (Korean)</label>
+      <input id="lessonTitleKorean" name="lesson_title_kor" type="text" class="form-control" placeholder="Ex: 인사" required>
+    </div>
+    <div class="row p-2">
+      <label for="lessonTitleEnglish" class="form-label">Lesson title (English)</label>
+      <input id="lessonTitleEnglish" name="lesson_title_en" type="text" class="form-control" placeholder="Ex: Greetings" required>
+    </div>
+  </div>
+  <div class="col-5 pb-4 px-4">
+    <div class="row p-2">
+      <label for="sublesson1Korean" class="form-label">Sublesson #1 title (Korean)</label>
+      <input id="sublesson1Korean" name="sublesson1_title_kor" type="text" class="form-control" placeholder="Ex: 저는 스티브 윌슨이에요." required>
+    </div>
+    <div class="row p-2">
+      <label for="sublesson1English" class="form-label">Sublesson #1 title (English)</label>
+      <input id="sublesson1English" name="sublesson1_title_en" type="text" class="form-control" placeholder="Ex: I'm Steve Wilson." required>
+    </div>
+    <div class="row p-2">
+      <label for="sublesson1Text" class="form-label">Sublesson #1 text</label>
+      <textarea id="sublesson1Text" name="sublesson1_text" class="form-control" rows="10"
+      placeholder="Ex: 안녕하세요? 저는 스티브 윌슨이에요. 3학년이에요.
+      안녕하세요? 저는 김유미예요. 저는 1학년이에요.
+      마이클 정이에요. 저도 1학년이에요." required></textarea>
+    </div>
+  </div>
+  <div class="col-5 pb-4 px-4">
+    <div class="row p-2">
+      <label for="sublesson2English" class="form-label">Sublesson #2 title (Korean)</label>
+      <input id="sublesson2Korean" name="sublesson2_title_kor" type="text" class="form-control" placeholder="Ex: 한국 사람이에요?" required>
+    </div>
+    <div class="row p-2">
+      <label for="sublesson2English" class="form-label">Sublesson #2 title (English)</label>
+      <input id="sublesson2English" name="sublesson2_title_en" type="text" class="form-control" placeholder="Ex: Are you Korean?" required>
+    </div>
+    <div class="row p-2">
+      <label for="sublesson2Text" class="form-label">Sublesson #2 text</label>
+      <textarea id="sublesson2Text" name="sublesson2_text" class="form-control" rows="10"
+      placeholder="Ex: 안녕하세요? 저는 마이클 정이에요. 이름이 뭐예요?
+      소피아 왕이에요. 반갑습니다.
+      소피아 씨는 한국 사람이에요?
+      아니요, 한국 사람이 아니에요. 중국 사람이에요.
+      아, 그래요? 저는 한국 사람이에요." required></textarea>
+    </div>
+  </div>
+  </div>
+  <div class="row m-1 justify-content-md-center">
+      <button class="btn btn-success btn-lg btn-block" type=submit>
+        Submit
+      </button>
+  </div>
+</form>
+
+{% endblock %}
+
+{% block script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+'use strict';
+var existing = {{existing_lessons | safe}};
+
+let validateLesson = function(){
+    let lesson = document.getElementById("lessonNum");
+    if (existing.includes(parseInt(lesson.value))) {
+      let alert = document.getElementById("lessonExistsAlert");
+      alert.classList.remove('collapse');
+      lesson.focus();
+      return false;
+    } else {
+      return true;
+    }
+  }
+</script>
+
+
+{% endblock %}
