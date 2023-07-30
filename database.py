@@ -10,6 +10,10 @@ def get_lessons():
     collection = db.conversations
     return collection.find().sort("lesson")
 
+def get_lesson(lesson):
+    collection = db.conversations
+    return collection.find_one({"lesson": lesson})
+
 def get_lesson_text(lesson, sublesson):
     collection = db.conversations
     res = collection.find_one({"lesson": lesson})["sublessons"][sublesson-1]
@@ -41,4 +45,7 @@ def get_existing_lesson_nums():
     res = collection.distinct("lesson")
     return res
 
-print(get_existing_lesson_nums())
+def update_lesson(lesson_info):
+    collection = db.conversations
+    lesson = lesson_info["lesson"]
+    collection.update_one({"lesson": lesson}, {"$set": lesson_info})

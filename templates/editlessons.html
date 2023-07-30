@@ -6,10 +6,10 @@
 
 {% block nav %}
 <li class="nav-item">
-  <a class="nav-link active" aria-current="page" href="/keyboard">Keyboard</a>
+  <a class="nav-link" aria-current="page" href="/keyboard">Keyboard</a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" aria-current="page" href="/lessons">Lessons</a>
+  <a class="nav-link  active" aria-current="page" href="/lessons">Lessons</a>
 </li>
 <li class="nav-item">
   <a class="nav-link" aria-current="page" href="/lessons/1.1">Practice</a>
@@ -41,7 +41,7 @@
         {% endfor %}
       </td>
       <td class="text-center">
-        <form class="button" action="/editlesson" method="POST">
+        <form class="button" action="/editlesson?lesson={{lesson['lesson']}}" method="POST">
         <div class="row m-1 justify-content-md-center">
             <button class="btn btn-warning">
               edit
@@ -50,7 +50,7 @@
         </form>
       </td>
       <td class="text-center">
-        <form class="button" action="/removelesson?lesson={{lesson["lesson"]}}" method="POST">
+        <form class="button" action="/removelesson?lesson={{lesson['lesson']}}" method="POST">
         <div class="row m-1 justify-content-md-center">
             <button class="btn btn-danger">
               delete

@@ -27,11 +27,6 @@
             {% block nav %}
             {% endblock %}
           </ul>
-          <!-- <ul class="navbar-nav ms-auto">
-            <li> <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-              ?
-            </button>
-          </ul> -->
         </div>
         <div class="navbar-nav navbar-right" id="navRight">
           <div class="navbar-nav">
@@ -54,42 +49,6 @@
         </div>
       </div>
     </nav>
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="intro" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="intro"> Switching to the 2-set Korean Keyboard</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class=" mx-auto text-center">
-              <div class="row">
-                <h5 class="text-center"> Depending on your operating system, do the following: </h1>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <a href="https://support.apple.com/en-mn/guide/korean-input-method/welcome/mac" class="alert-link" target="_blank">macOS</a>
-                  <div class="mx-auto">
-                  <img style='height: 80%; width: 80%; object-fit: contain' src="{{ url_for('static', filename='kor_keyboard_macOS.png') }}" alt="how to use korean keyboard">
-                  </div>
-                </div>
-                <div class="col">
-                  <a href="https://www.koreanfluent.com/cross_cultural/korean_keyboard/korean_keyboard.htm" class="alert-link" target="_blank">Windows</a>
-                  <br>
-                  <div class="mx-auto">
-                  <img style='height: 60%; width: 60%; object-fit: contain' src="{{ url_for('static', filename='kor_keyboard_windows.png') }}" alt="how to use korean keyboard">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Got it!</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
 
     <div class="container-fluid">
       {% block content %}{% endblock %}

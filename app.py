@@ -129,11 +129,11 @@ def addlesson():
                     "sublessons": [{"sublesson": 1,
                                     "title_kor": dic["sublesson1_title_kor"],
                                     "title_en": dic["sublesson1_title_en"],
-                                    "text": dic["sublesson1_text"]},
+                                    "text": dic["sublesson1_text"].strip()},
                                     {"sublesson": 2,
                                     "title_kor": dic["sublesson2_title_kor"],
                                     "title_en": dic["sublesson2_title_en"],
-                                    "text": dic["sublesson2_text"]}]}
+                                    "text": dic["sublesson2_text"].strip()}]}
     db.insert_lesson(lesson_info)
     return redirect(url_for('lessons'))
 
@@ -146,4 +146,40 @@ def removelesson():
         return redirect(url_for('index'))
     lesson = int(request.args.get("lesson"))
     db.delete_lesson(lesson)
+    return redirect(url_for('lessons'))
+
+@app.route('/editlesson', methods=['GET', 'POST'])
+def editlesson():
+    netid = _cas.authenticate()
+    admins = db.get_admins()
+    isadmin = netid in admins
+    if not isadmin:
+        return redirect(url_for('index'))
+    lesson = int(request.args.get("lesson"))
+    lesson_info = db.get_lesson(lesson)
+    html = render_template('editlesson.html', lesson_info=lesson_info, netid=netid, isadmin=isadmin)
+    response = make_response(html)
+    return response
+
+@app.route('/updatelesson', methods=['GET', 'POST'])
+def updatelesson():
+    netid = _cas.authenticate()
+    admins = db.get_admins()
+    isadmin = netid in admins
+    if not isadmin:
+        return redirect(url_for('index'))
+    dic = request.form
+
+    lesson_info = {"lesson": int(dic["lesson"]),
+                    "title_kor": dic["lesson_title_kor"],
+                    "title_en": dic["lesson_title_en"],
+                    "sublessons": [{"sublesson": 1,
+                                    "title_kor": dic["sublesson1_title_kor"],
+                                    "title_en": dic["sublesson1_title_en"],
+                                    "text": dic["sublesson1_text"].strip()},
+                                    {"sublesson": 2,
+                                    "title_kor": dic["sublesson2_title_kor"],
+                                    "title_en": dic["sublesson2_title_en"],
+                                    "text": dic["sublesson2_text"].strip()}]}
+    db.update_lesson(lesson_info)
     return redirect(url_for('lessons'))
