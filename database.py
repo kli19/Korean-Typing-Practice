@@ -37,8 +37,16 @@ def delete_lesson(lesson_num):
 
 def get_admins():
     collection = db.admins
-    res = collection.find_one({"type": "admins_list"})["admins_list"]
+    res = collection.distinct("netid")
     return res
+
+def insert_admin(admin):
+    collection = db.admins
+    collection.insert_one({"netid": admin})
+
+def delete_admin(admin):
+    collection = db.admins
+    collection.delete_one({"netid": admin})
 
 def get_existing_lesson_nums():
     collection = db.conversations

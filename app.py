@@ -1,6 +1,6 @@
 from flask import Flask, request, make_response, redirect, url_for
 from flask import render_template, session
-from keys import APP_SECRET_KEY
+# from keys import APP_SECRET_KEY
 from auth import CASClient
 from os import environ
 
@@ -11,10 +11,10 @@ import database as db
 app = Flask(__name__, template_folder='./templates')
 
 # Use this when testing locally
-app.secret_key = APP_SECRET_KEY
+# app.secret_key = APP_SECRET_KEY
 
 # Use this when deploying to Heroku
-# app.secret_key = environ.get('APP_SECRET_KEY')
+app.secret_key = environ.get('APP_SECRET_KEY')
 
 _cas = CASClient()
 
@@ -28,8 +28,6 @@ _cas = CASClient()
 def login():
     netid = _cas.authenticate()
     netid = netid.rstrip()
-    # if not db.user_exists(netid):
-    #     db.insert_user(netid)
     return redirect(url_for('practice', lesson_num=1.1))
 
 @app.route('/logout', methods=['GET'])
@@ -48,7 +46,9 @@ def index():
 @app.route('/keyboard', methods=['GET'])
 def keyboard():
     netid = _cas.authenticate()
-    html = render_template('keyboard.html', netid=netid)
+    admins = db.get_admins()
+    isadmin = netid in admins
+    html = render_template('keyboard.html', netid=netid, isadmin=isadmin)
     response = make_response(html)
     return response
 
@@ -65,6 +65,8 @@ def lessons():
 @app.route('/lessons/<lesson_num>', methods=['GET'])
 def practice(lesson_num):
     netid = _cas.authenticate()
+    admins = db.get_admins()
+    isadmin = netid in admins
     lesson = int(lesson_num.split(".")[0])
     sublesson = int(lesson_num.split(".")[1])
     prev, next = None, None
@@ -85,7 +87,7 @@ def practice(lesson_num):
     text = db.get_lesson_text(lesson, sublesson)
     convo = db.get_conversation(lesson, sublesson)
     num_characters = len(''.join(convo.replace('?', '').replace('.', '').replace(',', '').split()))
-    html = render_template('practice.html', lesson_num=lesson_num, text=text, prev=prev, next=next, num_characters=num_characters, netid=netid)
+    html = render_template('practice.html', lesson_num=lesson_num, text=text, prev=prev, next=next, num_characters=num_characters, netid=netid, isadmin=isadmin)
     response = make_response(html)
     return response
 
@@ -183,3 +185,36 @@ def updatelesson():
                                     "text": dic["sublesson2_text"].strip()}]}
     db.update_lesson(lesson_info)
     return redirect(url_for('lessons'))
+
+@app.route('/admins', methods=['GET', 'POST'])
+def admins():
+    netid = _cas.authenticate()
+    admins = db.get_admins()
+    isadmin = netid in admins
+    if not isadmin:
+        return redirect(url_for('index'))
+    html = render_template('admins.html', netid=netid, isadmin=isadmin, admins=admins)
+    response = make_response(html)
+    return response
+
+@app.route('/addadmin', methods=['GET', 'POST'])
+def addadmin():
+    netid = _cas.authenticate()
+    admins = db.get_admins()
+    isadmin = netid in admins
+    if not isadmin:
+        return redirect(url_for('index'))
+    new_admin = request.form["newAdmin"].strip()
+    db.insert_admin(new_admin)
+    return redirect(url_for('admins'))
+
+@app.route('/removeadmin', methods=['GET', 'POST'])
+def removeadmin():
+    netid = _cas.authenticate()
+    admins = db.get_admins()
+    isadmin = netid in admins
+    if not isadmin:
+        return redirect(url_for('index'))
+    admin = request.args.get("admin").strip()
+    db.delete_admin(admin)
+    return redirect(url_for('admins'))
